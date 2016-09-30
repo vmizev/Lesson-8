@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+ 		<meta charset="UTF-8">
+ 		<title>Lesson 8</title>
+ 		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<script>
+		//Задача 1
+		function multiply() {
+				var res = 1;
+				if (arguments.length != 0) {
+					for (var i = 0; i < arguments.length; i++) {
+						res *= arguments[i];
+					}
+					return res;
+				} else {
+					return 0;
+				}
+		}
+		var multiplyRes = multiply(1, 2, 3);
+		document.write(multiplyRes  + "<br>");
+
+		//Задача 2
+		function factorial (n) {
+			if (n > 0) {
+				return (n * (factorial(n-1)));
+			} else {
+				return 1;
+			}
+		}
+		document.write(factorial(7)  + "<br>");
+
+		//Задача 3
+		function reverseString(string) {
+			var res = "";
+			for (i = string.length - 1; i >= 0; i--){
+				res += string[i];
+			}	
+			return res;
+		}
+		var resultString = reverseString('test');
+		document.write(resultString  + "<br>");
+
+		//Задача 4
+		function getCodeStringFromText (textField) {
+			var res = "";
+			for (i = 0; i < textField.length; i++){
+				res += textField.charCodeAt(i) + ' ';
+			}
+			return res;
+		}
+		var codeString = getCodeStringFromText('hello');		
+		document.write(codeString  + "<br>");
+
+		//Задача 5 (не понял)
+
+
+
+		//Задача 6
+		function firstFunction (array, functionCallback){
+			var stroka = "";
+			for (i = 0; i < array.length; i++) {
+				stroka += functionCallback(array[i]);
+			}
+			return "New value: " + stroka + "<br>";
+		}
+
+		function firstCallback(itemOfArray){
+			if (typeof itemOfArray == 'string') {
+				var res = "";
+				for (j = 0; j < itemOfArray.length; j++) {
+					if (j == 0){
+						res = itemOfArray[0].toUpperCase();
+					}
+					else {
+						res += itemOfArray[j]; 
+					}
+				}					
+			}
+			else if (typeof itemOfArray == 'number'){
+				var res = itemOfArray*10 + ', ';
+			}
+			else if (typeof itemOfArray == 'object'){
+				var res = itemOfArray['name'] + ' is ' + itemOfArray['age'] + ', ';
+			}
+			return res;
+		}
+		var resultCallBackWorck = firstFunction(['my', 'name', 'is', 'Trinity'], firstCallback);
+		document.write(resultCallBackWorck);
+		var resultCallBackWorck = firstFunction([10, 20, 30], firstCallback);
+		document.write(resultCallBackWorck);
+		var resultCallBackWorck = firstFunction([{age: 45, name: 'John' }, {age: 20, name: 'Aaron' }], firstCallback);
+		document.write(resultCallBackWorck);
+
+		function secondCallback(itemOfArray){
+			var res = "";
+			for (j = itemOfArray.length - 1; j >= 0; j--) {
+				res += itemOfArray[j];
+			}			
+			return res + ', ';
+		}
+		var resultCallBackWorck = firstFunction(['abc', '123'], secondCallback);
+		document.write(resultCallBackWorck);
+
+		var resultCallBackWorck = firstFunction([1, 2, 3], function(number) { return number + 5 + ', ';} );
+		document.write(resultCallBackWorck);
+		//Не знаю как проверить массив с намбером и строкой одновременно ['abc', '123'] чтобы использовать firstCallback, а не secondCallback
+
+
+		</script>
+
+
+		
+	</body>
+</html>
